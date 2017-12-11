@@ -10,8 +10,7 @@ function appendGtmScript(trackId, id) {
       'gtm.start': new Date().getTime(),
       event: 'gtm.js'
     });
-    var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s),
+    var j = d.createElement(s),
       dl = l != 'dataLayer' ? '&l=' + l : '';
     j.async = true;
     j.id = id
@@ -19,8 +18,9 @@ function appendGtmScript(trackId, id) {
 
     // if dataLayer script element exists, insert after it
     var dt = d.getElementById('gtm-gt')
+    var f = d.getElementsByTagName(s)[0];
     if (!!dt) {
-      dt.parentNode.insertAfter(j, dt)
+      dt.parentNode.insertAfter(j, dt);
     } else {
       f.parentNode.insertBefore(j, f);
     }
