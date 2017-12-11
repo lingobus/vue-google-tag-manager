@@ -56,12 +56,12 @@ function initialize(trackId, opts) {
     w.dataLayer.push(arguments)
   }
   const gtagOpt = opts.gtagOpt || {}
-  gtag("js", new Date())
-  // gtag('config', trackId, gtagOpt)
-  gtag({
-    "event": opts.pageViewEventName,
-    ...gtagOpt
-  })
+  gtag({"js": new Date()})
+  // gtag({
+  //   "event": opts.pageViewEventName,
+  //   ...gtagOpt
+  // })
+  Object.assign({}, {"event": opts.pageViewEventName, gtagOpt})
 }
 
 /**
@@ -69,7 +69,7 @@ function initialize(trackId, opts) {
  * @param  {String} pathPath
  * @param  {Object} opts
  */
-function configPagePath(pathPath, opts) {
+function configPagePath(pathPath, opts, trackId) {
   initialize(trackId, opts)
   // send page view event
   gtag({
@@ -88,23 +88,22 @@ function log(url) {
  * @param {*} opts
  */
 export default function (router, GA_TRACKING_ID, opts = {}) {
-  const options = {
+  const options = Object.assign({}, {
     // customized page_view event filed name
     pageViewEventName: 'page_view',
     // gtm script tag's name
     scriptId: "gtm-js",
     //options dataLayer object declared before gtm script tag, (optional)
     dataLayerData: undefined,
-    ...opts
-  }
+  }, opts)
   if (typeof router === 'function') {
     router(url => {
-      configPagePath(url, options)
+      configPagePath(url, options, GA_TRACKING_ID)
       if (opts.debug) log(url)
     })
   } else {
     router.afterEach(to => {
-      configPagePath(to.fullPath, options)
+      configPagePath(to.fullPath, options, GA_TRACKING_ID)
       if (opts.debug) log(to.fullPath)
     })
   }
