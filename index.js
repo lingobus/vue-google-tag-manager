@@ -17,10 +17,11 @@ function appendGtmScript(trackId, id) {
     j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
 
     // if dataLayer script element exists, insert after it
-    var dt = d.getElementById('gtm-gt')
+    var dt = d.getElementById('gtm-dt')
     var f = d.getElementsByTagName(s)[0];
     if (!!dt) {
-      dt.parentNode.insertAfter(j, dt);
+      console.log('insert after')
+      dt.parentNode.insertBefore(j, dt.nextSibling);
     } else {
       f.parentNode.insertBefore(j, f);
     }
@@ -35,7 +36,7 @@ function initDataLayer(data) {
   var f = document.getElementsByTagName('script')[0]
   var dtScript = document.createElement('script')
   dtScript.id = 'gtm-dt'
-  dtScript.text = "const dataLayer = " + JSON.stringify(data)
+  dtScript.text = "var dataLayer = " + JSON.stringify(data)
   f.parentNode.insertBefore(dtScript, f)
 }
 
@@ -52,8 +53,8 @@ function initialize(trackId, opts) {
   }
   appendGtmScript(trackId, opts.scriptId, opts.dataLayerData)
   w.dataLayer = w.dataLayer || []
-  const gtag = w.gtag = w.gtag || function () {
-    w.dataLayer.push(arguments)
+  const gtag = w.gtag = w.gtag || function (data = {}) {
+    w.dataLayer.push(data)
   }
   const gtagOpt = opts.gtagOpt || {}
   gtag({"js": new Date()})
@@ -61,7 +62,7 @@ function initialize(trackId, opts) {
   //   "event": opts.pageViewEventName,
   //   ...gtagOpt
   // })
-  Object.assign({}, {"event": opts.pageViewEventName, gtagOpt})
+  gtag(Object.assign({}, {"event": opts.pageViewEventName, gtagOpt}))
 }
 
 /**
