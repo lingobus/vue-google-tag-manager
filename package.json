@@ -2,8 +2,9 @@
   "name": "vue-google-tag-manager",
   "version": "1.0.0",
   "description": "google tag manager for vue",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "babel src -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,11 @@
   "bugs": {
     "url": "https://github.com/lingobus/vue-google-tag-manager/issues"
   },
-  "homepage": "https://github.com/lingobus/vue-google-tag-manager#readme"
+  "homepage": "https://github.com/lingobus/vue-google-tag-manager#readme",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
 }

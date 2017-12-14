@@ -20,7 +20,6 @@ function appendGtmScript(trackId, id) {
     var dt = d.getElementById('gtm-dt')
     var f = d.getElementsByTagName(s)[0];
     if (!!dt) {
-      console.log('insert after')
       dt.parentNode.insertBefore(j, dt.nextSibling);
     } else {
       f.parentNode.insertBefore(j, f);

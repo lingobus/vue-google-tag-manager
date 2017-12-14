@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browser": ["ie > 7"]
+      },
+      "uglify": true,
+      "modules": false
+    }]
+  ]
+}

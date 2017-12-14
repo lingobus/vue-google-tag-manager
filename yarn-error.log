@@ -1,0 +1,53 @@
+Arguments: 
+  /Users/yankechao/.nvm/versions/node/v8.0.0/bin/node /Users/yankechao/.nvm/versions/node/v8.0.0/bin/yarn add babel babel-core babel-preset-env
+
+PATH: 
+  /Users/yankechao/.nvm/versions/node/v8.0.0/bin:/Users/yankechao/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/ImageMagick/bin:/Users/yankechao/bin
+
+Yarn version: 
+  0.27.5
+
+Node version: 
+  8.0.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "vue-google-tag-manager",
+    "version": "1.0.0",
+    "description": "google tag manager for vue",
+    "main": "dist/vue-google-tag-manager.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/lingobus/vue-google-tag-manager.git"
+    },
+    "keywords": [
+      "vue",
+      "lingobus",
+      "gtm"
+    ],
+    "author": "jzykc@hotmail.com",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/lingobus/vue-google-tag-manager/issues"
+    },
+    "homepage": "https://github.com/lingobus/vue-google-tag-manager#readme"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/babel-preset-env: ETIMEDOUT
+      at Timeout._onTimeout (/Users/yankechao/.nvm/versions/node/v8.0.0/lib/node_modules/yarn/node_modules/_request@2.81.0@request/request.js:852:19)
+      at ontimeout (timers.js:488:11)
+      at tryOnTimeout (timers.js:323:5)
+      at Timer.listOnTimeout (timers.js:283:5)
