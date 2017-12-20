@@ -74,10 +74,10 @@ function initialize(trackId, opts) {
 function configPagePath(pathPath, opts, trackId) {
   initialize(trackId, opts);
   // send page view event
-  gtag({
-    "event": opts.pageViewEventName,
-    "page_path": pathPath
-  });
+  // gtag({
+  //   "event": opts.pageViewEventName,
+  //   "page_path": pathPath
+  // })
 }
 
 function log(url) {
@@ -106,6 +106,7 @@ export default function (router, GA_TRACKING_ID) {
       if (opts.debug) log(url);
     });
   } else {
+    configPagePath('', options, GA_TRACKING_ID);
     router.afterEach(function (to) {
       configPagePath(to.fullPath, options, GA_TRACKING_ID);
       if (opts.debug) log(to.fullPath);
